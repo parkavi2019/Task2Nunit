@@ -35,7 +35,7 @@ namespace CompetitionNunit.Tests
         {
             certificationPageObj.CertificationTabClick();
             Thread.Sleep(2000);
-            certificationPageObj.clearExistingdata();
+          
 
             //read test data from the json file
             List<CertificationTestModel> AddCertificationfile = JsonHelper.ReadTestDataFromJson<CertificationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\AddCertificationfile.json");
@@ -78,6 +78,7 @@ namespace CompetitionNunit.Tests
             certificationPageObj.CertificationTabClick();
 
             Thread.Sleep(1000);
+            TestAddCertification();
 
             //read test data from the json file
             List<CertificationTestModel> editCertificationTestData = JsonHelper.ReadTestDataFromJson<CertificationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\EditCertificationfile.json");
@@ -114,6 +115,8 @@ namespace CompetitionNunit.Tests
         public void TestDeleteCertification()
         {
             certificationPageObj.CertificationTabClick();
+            TestAddCertification();
+
 
             certificationPageObj.DeleteCertification();
             List<CertificationTestModel> editCertificationTestData = JsonHelper.ReadTestDataFromJson<CertificationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\DeleteCertificationfile.json");

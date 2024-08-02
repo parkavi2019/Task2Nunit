@@ -24,24 +24,7 @@ namespace CompetitionNunit.Pages
         private static IWebElement editCertifiedFrom => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td/div/div/div[2]/input"));
         private static IWebElement editYear => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td/div/div/div[3]/select"));
         private static IWebElement updateButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td/div/span/input[1]"));
-        public void clearExistingdata()
-        {
-            try
-            {
-                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
-                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
-                foreach (var button in deleteButtons)
-                {
-                    button.Click();
-                }
-
-            }
-
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("no items to delete");
-            }
-        }
+        
 
         public void CertificationTabClick()
         {
@@ -113,7 +96,7 @@ namespace CompetitionNunit.Pages
 
             string actualMessage = Messagebox.Text;
             Console.WriteLine(actualMessage);
-            string expectedMessage1 = "Java been updated to your certification";
+            string expectedMessage1 = "Java has been updated to your certification";
             string expectedMessage2 = "Please enter Certification Name,Certification From and Certification Year";
             string expectedMessage3 = "This information is already exist.";
 

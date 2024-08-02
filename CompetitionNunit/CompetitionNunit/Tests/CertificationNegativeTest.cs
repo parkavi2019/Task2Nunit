@@ -29,7 +29,7 @@ namespace CompetitionNunit.Tests
         public void TestAddCertification()
         {
             NegativecertificationPageObj.CertificationTabClick();
-            NegativecertificationPageObj.clearExistingdata();
+          
 
             //read test data from the json file
             List<CertificationTestModel> addNegativeTestData = JsonHelper.ReadTestDataFromJson<CertificationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\AddCertificationNegativefile.json");
@@ -74,7 +74,7 @@ namespace CompetitionNunit.Tests
             NegativecertificationPageObj.CertificationTabClick();
             Thread.Sleep(1000);
 
-
+            
             //read test data from the json file
             List<CertificationTestModel> EditCertificationNegative = JsonHelper.ReadTestDataFromJson<CertificationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\EditCertificationNegativefile.json");
             Console.WriteLine(EditCertificationNegative.ToString());
@@ -97,7 +97,7 @@ namespace CompetitionNunit.Tests
 
                 string actualMessage = Messagebox.Text;
                 Console.WriteLine(actualMessage);
-                string expectedMessage1 = "Java been updated to your certification";
+                string expectedMessage1 = "Java has been updated to your certification";
                 string expectedMessage2 = "Please enter Certification Name,Certification From and Certification Year";
                 string expectedMessage3 = "This information is already exist.";
 

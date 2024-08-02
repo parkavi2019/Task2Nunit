@@ -14,7 +14,7 @@ namespace CompetitionNunit.Pages
     {
         private static IWebElement newCertificationfile => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[1]"));
         private static IWebElement neweditCertificationfile => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[1]"));
-        private static IWebElement certificationTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[4]"));
+        private static IWebElement certificationTab => driver.FindElement(By.XPath("//a[contains(text(),'Certifications')]"));
         private static IWebElement addNewButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div"));
         private static IWebElement CertificateTextBox => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[1]/div/input"));
 
@@ -29,33 +29,18 @@ namespace CompetitionNunit.Pages
         private static IWebElement UpdateButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td/div/span/input[1]"));
         private static IWebElement DeleteButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
 
-        public void clearExistingdata()
-        {
-            try
-            {
-                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
-                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
-                foreach (var button in deleteButtons)
-                {
-                    button.Click();
-                    Thread.Sleep(2000);
-                }
-
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("no items to delete");
-            }
-
-        }
+      
         public void CertificationTabClick()
         {
-
+           
             certificationTab.Click();
+           // clearExistingdata();
             Thread.Sleep(2000);
         }
         public void AddCertification(string Certification, string CertifiedFrom, string Year)
         {
+            
+
             // Click on AddNew button
             addNewButton.Click();
 
@@ -120,14 +105,14 @@ namespace CompetitionNunit.Pages
             UpdateButton.Click();
             Thread.Sleep(2000);
 
-            // WaitUtilitie.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td/div/span/input[1]", 1);
+            
             IWebElement Messagebox = driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
 
             WaitUtilitie.WaitToBeVisible(driver, "XPath", "//div[@class='ns-box-inner']", 3);
 
             string actualMessage = Messagebox.Text;
             Console.WriteLine(actualMessage);
-            string expectedMessage1 = "Java been updated to your certification";
+            string expectedMessage1 = "Java has been updated to your certification";
             string expectedMessage2 = "Please enter Certification Name,Certification From and Certification Year";
             string expectedMessage3 = "This information is already exist.";
 

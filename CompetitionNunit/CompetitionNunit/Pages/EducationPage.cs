@@ -2,13 +2,14 @@
 using OpenQA.Selenium;
 using CompetitionNunit.Utilities;
 using AventStack.ExtentReports;
+using static System.Collections.Specialized.BitVector32;
 namespace CompetitionNunit.Pages
 {
     public class EducationPage : CommonDriver
     {
         private static IWebElement newEducationfile => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
         private static IWebElement neweditEducationfile => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[2]"));
-        private static IWebElement educationTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
+        private static IWebElement educationTab => driver.FindElement(By.XPath("//a[text()='Education']"));
 
         private static IWebElement AddNew => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div"));
 
@@ -29,29 +30,13 @@ namespace CompetitionNunit.Pages
 
         private static IWebElement updateButton => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td/div[3]/input[1]"));
         private static IWebElement deleteButton => driver.FindElement(By.XPath("//tbody/tr[1]/td[6]/span[2]"));
-        public void ClearExistingdata()
-        {
-            try
-            {
-                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='account - profile - section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[3]/tr/td[6]/span[2]/i"));
-                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[3]/tr/td[6]/span[2]/i"));
-                foreach (var button in deleteButtons)
-                {
-                    button.Click();
-                    Thread.Sleep(2000);
-                }
-
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("no items to delete");
-            }
-
-        }
+      
         public void EducationTabClick()
         {
-
+            Thread.Sleep(1000);
             educationTab.Click();
+
+           // ClearExistingdata();
             Thread.Sleep(2000);
         }
 

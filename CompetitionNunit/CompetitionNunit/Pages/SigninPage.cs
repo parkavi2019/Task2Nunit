@@ -21,11 +21,12 @@ namespace CompetitionNunit.Pages
         {
 
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             signInButton.Click();
 
             //Login credentials from the Json file
-            string jsonFilePath = "F:\\IcMarsProject\\CompetitionTask\\CompetitionTask1\\JsonFile\\Signinfile.json";
+            string jsonFilePath = "F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\Signinfile.json";
+        
 
 
             //Deserialize the Json content

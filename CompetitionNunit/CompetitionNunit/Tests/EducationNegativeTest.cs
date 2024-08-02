@@ -37,7 +37,7 @@ namespace CompetitionNunit.Tests
 
         {
             NegativeeducationPageObj.EducationTabClick();
-            NegativeeducationPageObj.ClearExistingdata();
+            
 
             //read test data from the json file
             List<EducationTestModel> AddEducationNegative = JsonHelper.ReadTestDataFromJson<EducationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\AddEducationNegative.json");
@@ -91,8 +91,8 @@ namespace CompetitionNunit.Tests
 
         {
             NegativeeducationPageObj.EducationTabClick();
-            NegativeeducationPageObj.ClearExistingdata();
-
+            
+            TestAddEducation();
             //read test data from the json file
             List<EducationTestModel> EditEducationNegative = JsonHelper.ReadTestDataFromJson<EducationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\EditEducationNegativefile.json");
             Console.WriteLine(EditEducationNegative.ToString());

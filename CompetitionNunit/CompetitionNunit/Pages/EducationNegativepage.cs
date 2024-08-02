@@ -33,24 +33,7 @@ namespace CompetitionNunit.Pages
 
 
 
-        public void ClearExistingdata()
-        {
-            try
-            {
-                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='account - profile - section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[3]/tr/td[6]/span[2]/i"));
-                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[3]/tr/td[6]/span[2]/i"));
-                foreach (var button in deleteButtons)
-                {
-                    button.Click();
-                }
-
-            }
-            catch (NoSuchElementException)
-            {
-                Console.WriteLine("no items to delete");
-            }
-
-        }
+       
         public void EducationTabClick()
         {
 

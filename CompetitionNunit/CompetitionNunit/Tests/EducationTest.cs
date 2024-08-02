@@ -32,7 +32,7 @@ namespace CompetitionNunit.Tests
 
             educationPageObj.EducationTabClick();
             Thread.Sleep(2000);
-            educationPageObj.ClearExistingdata();
+          
 
             //read test data from the json file
             List<EducationTestModel> AddEducationfile = JsonHelper.ReadTestDataFromJson<EducationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\AddEducationfile.json");
@@ -53,6 +53,7 @@ namespace CompetitionNunit.Tests
 
                 string Year = data.Year;
                 Console.WriteLine(Year);
+
 
 
                 educationPageObj.AddEducation(University, Country, Title, Degree, Year);
@@ -85,7 +86,7 @@ namespace CompetitionNunit.Tests
         public void TestEditEducation()
         {
             educationPageObj.EducationTabClick();
-
+            TestAddEducation();
             //read test data from the json file
             List<EducationTestModel> editEducationTestData = JsonHelper.ReadTestDataFromJson<EducationTestModel>("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\JsonFile\\EditEducationfile.json");
             foreach (var data in editEducationTestData)
@@ -128,6 +129,7 @@ namespace CompetitionNunit.Tests
         public void TestDeleteEducation()
         {
             educationPageObj.EducationTabClick();
+            TestAddEducation();
             educationPageObj.DeleteEducation();
 
             //read test data from the json file

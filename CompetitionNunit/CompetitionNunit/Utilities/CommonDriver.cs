@@ -47,6 +47,7 @@ namespace CompetitionNunit.Utilities
             driver.Navigate().GoToUrl("http://localhost:5000/");
             SigninPage signinPage = new SigninPage();
             signinPage.SignInSteps();
+            Cleanup();
             var testTitle = TestContext.CurrentContext.Test.Name;
             Console.WriteLine($"Executing test: {testTitle}");
             test = extent.CreateTest(testTitle);
@@ -76,6 +77,100 @@ namespace CompetitionNunit.Utilities
             string screenshotPath = $"Screenshots/{screenshotName}_{DateTime.Now:yyyyMMddHHmmss}.png";
             string fullPath = Path.Combine("F:\\CompetitionTask\\Task2Nunit\\CompetitionNunit\\CompetitionNunit\\", screenshotPath);
             screenshot.SaveAsFile(fullPath, OpenQA.Selenium.ScreenshotImageFormat.Png);
+            
+        }
+        public void Cleanup()
+        {
+            EducationPage educationPageObj = new EducationPage();
+            educationPageObj.EducationTabClick();
+            educationPageObj.ClearEducationExistingdata();
+
+            CertificationPage certificationPageObj = new CertificationPage();
+            certificationPageObj.CertificationTabClick();
+            certificationPageObj.clearCertificationExistingdata();
+
+            EducationNegativepage NegativeeducationPageObj = new EducationNegativepage();
+            NegativeeducationPageObj.EducationTabClick();
+            NegativeeducationPageObj.ClearNegativeEducationExistingdata();
+
+            CertificationNegativepage NegativecertificationPageObj = new CertificationNegativepage();
+            NegativecertificationPageObj.CertificationTabClick();
+            NegativecertificationPageObj.clearNegativeCertificationExistingdata();
+
+        }
+        public void clearCertificationExistingdata()
+        {
+            try
+            {
+                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
+                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
+                foreach (var button in deleteButtons)
+                {
+                    button.Click();
+                    Thread.Sleep(2000);
+                }
+
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("no items to delete");
+            }
+
+        }
+        public void ClearEducationExistingdata()
+        {
+            try
+            {
+                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[6]/span[2]/i"));
+                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[6]/span[2]/i"));
+                foreach (var button in deleteButtons)
+                {
+                    button.Click();
+                    Thread.Sleep(2000);
+                }
+
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("no items to delete");
+            }
+
+        }
+        public void ClearNegativeEducationExistingdata()
+        {
+            try
+            {
+                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id='account - profile - section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[3]/tr/td[6]/span[2]/i"));
+                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[3]/tr/td[6]/span[2]/i"));
+                foreach (var button in deleteButtons)
+                {
+                    button.Click();
+                }
+
+            }
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("no items to delete");
+            }
+
+        }
+        public void clearNegativeCertificationExistingdata()
+        {
+            try
+            {
+                IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
+                var deleteButtons = driver.FindElements(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/tbody/tr/td[4]/span[2]/i"));
+                foreach (var button in deleteButtons)
+                {
+                    button.Click();
+                }
+
+            }
+
+            catch (NoSuchElementException)
+            {
+                Console.WriteLine("no items to delete");
+            }
         }
         public void Close()
         {

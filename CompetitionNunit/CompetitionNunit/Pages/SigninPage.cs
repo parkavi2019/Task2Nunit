@@ -22,6 +22,7 @@ namespace CompetitionNunit.Pages
 
 
             Thread.Sleep(3000);
+            driver.Navigate().GoToUrl("http://localhost:5000/");
             signInButton.Click();
 
             //Login credentials from the Json file

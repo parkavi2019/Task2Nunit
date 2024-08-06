@@ -25,6 +25,7 @@ namespace CompetitionNunit.Utilities
         private ExtentReports extent;
         private ExtentTest test;
         [OneTimeSetUp]
+        
         public void ExtentReportsSetup()
         {
             try
@@ -41,10 +42,10 @@ namespace CompetitionNunit.Utilities
         [SetUp]
         public void SetupActions()
         {
-            Console.WriteLine("Setting up WebDriver...");
+            
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("http://localhost:5000/");
+           
             SigninPage signinPage = new SigninPage();
             signinPage.SignInSteps();
             Cleanup();

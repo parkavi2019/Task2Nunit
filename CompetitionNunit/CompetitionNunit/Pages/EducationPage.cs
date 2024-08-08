@@ -9,7 +9,7 @@ namespace CompetitionNunit.Pages
     {
         private static IWebElement newEducationfile => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody[last()]/tr/td[2]"));
         private static IWebElement neweditEducationfile => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/tbody/tr/td[2]"));
-        private static IWebElement educationTab => driver.FindElement(By.XPath("//a[text()='Education']"));
+        private static IWebElement educationTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
 
         private static IWebElement AddNew => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div"));
 
@@ -33,7 +33,7 @@ namespace CompetitionNunit.Pages
       
         public void EducationTabClick()
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             educationTab.Click();
 
            // ClearExistingdata();

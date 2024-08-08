@@ -24,8 +24,11 @@ namespace CompetitionNunit.Utilities
         public static IWebDriver driver;
         private ExtentReports extent;
         private ExtentTest test;
+
+        public static EducationPage educationPageObj;
+        public static CertificationPage certificationPageObj;
         [OneTimeSetUp]
-        
+       
         public void ExtentReportsSetup()
         {
             try
@@ -38,6 +41,7 @@ namespace CompetitionNunit.Utilities
             {
                 Console.WriteLine($"Error setting up ExtentReports: {ex.Message}");
             }
+            Cleanup();
         }
         [SetUp]
         public void SetupActions()
@@ -48,7 +52,7 @@ namespace CompetitionNunit.Utilities
            
             SigninPage signinPage = new SigninPage();
             signinPage.SignInSteps();
-            Cleanup();
+            
             var testTitle = TestContext.CurrentContext.Test.Name;
             Console.WriteLine($"Executing test: {testTitle}");
             test = extent.CreateTest(testTitle);
@@ -82,22 +86,22 @@ namespace CompetitionNunit.Utilities
         }
         public void Cleanup()
         {
-            EducationPage educationPageObj = new EducationPage();
+             educationPageObj = new EducationPage();
             educationPageObj.EducationTabClick();
             educationPageObj.ClearEducationExistingdata();
 
-            CertificationPage certificationPageObj = new CertificationPage();
+             certificationPageObj = new CertificationPage();
             certificationPageObj.CertificationTabClick();
             certificationPageObj.clearCertificationExistingdata();
 
-            EducationNegativepage NegativeeducationPageObj = new EducationNegativepage();
+            /*EducationNegativepage NegativeeducationPageObj = new EducationNegativepage();
             NegativeeducationPageObj.EducationTabClick();
             NegativeeducationPageObj.ClearNegativeEducationExistingdata();
 
             CertificationNegativepage NegativecertificationPageObj = new CertificationNegativepage();
             NegativecertificationPageObj.CertificationTabClick();
             NegativecertificationPageObj.clearNegativeCertificationExistingdata();
-
+*/
         }
         public void clearCertificationExistingdata()
         {
